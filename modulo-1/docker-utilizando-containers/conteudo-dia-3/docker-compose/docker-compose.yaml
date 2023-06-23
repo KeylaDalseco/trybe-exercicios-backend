@@ -1,0 +1,37 @@
+version: '3'
+services:
+  frontend:
+    build: frontend/ # Especificamos o contexto, ou seja, a pasta onde está o Dockerfile.
+    restart: always # será reiniciado sempre
+    ports:
+      - 3000:3000
+    depends_on:
+      - backend # 3 - Se o backend estiver funcional, vem para o frontend q e a proxima dependencia.
+    volumes:
+      - ./frontend/src:/frontend/src
+    networks:
+      - rede-virtual-1
+  backend:
+    build: backend/
+    restart: always
+    ports:
+      - 3001:3001
+    environment:
+      - DB_HOST=database
+    depends_on:
+      - database # 2 - como o database n tem dependencia, ele sera o primeiro. E se ele estiver funcionando, virá para o backend.
+    networks:
+      - rede-virtual-1
+      - rede-virtual-2
+  database:
+    image: betrybe/docker-compose-example-database:v1  # 1 - Especificamos a Imagem Docker diretamente.
+    restart: always
+    networks:
+      - rede-virtual-2
+
+volumes:
+  dados-do-banco:
+
+networks:
+  rede-virtual-1:
+  rede-virtual-2:
