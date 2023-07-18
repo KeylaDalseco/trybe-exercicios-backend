@@ -1,17 +1,19 @@
 {
-  "name": "testes",
+  "name": "filmes-atividade",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test/**/*.test.js --exit"
-
+    "start": "node filmes.js",
+    "dev": "nodemon src/server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "express": "4.17.1"
+  },
   "devDependencies": {
-    "chai": "4.3.4",
-    "mocha": "8.4.0"
+    "nodemon": "2.0.15"
   }
 }
