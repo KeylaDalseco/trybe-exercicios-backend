@@ -1,0 +1,304 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "TrybeCar",
+    "dateExported": "2023-05-29T19:52:33.677Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "bde24c02-551f-4878-93ca-7e2121419904",
+            "name": "Driver",
+            "containerId": "",
+            "created": "2023-05-29T19:50:31.683Z",
+            "sortNum": 5000
+        },
+        {
+            "_id": "b06689ab-92c1-4d14-b41d-47268cf57378",
+            "name": "Passengers",
+            "containerId": "",
+            "created": "2023-05-29T19:50:31.684Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "86dc3fcd-e989-4ce1-b835-4d1308535097",
+            "name": "Cars",
+            "containerId": "",
+            "created": "2023-05-29T19:50:31.685Z",
+            "sortNum": 40000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "e79e0af9-c1b2-4e10-b016-a76d3a3b50a9",
+            "colId": "6df60a24-48e2-41d2-a942-618f470af30c",
+            "containerId": "86dc3fcd-e989-4ce1-b835-4d1308535097",
+            "name": "Listar carros",
+            "url": "http://localhost:3001/cars",
+            "method": "GET",
+            "sortNum": 5000,
+            "created": "2023-05-29T19:50:31.684Z",
+            "modified": "2023-05-29T19:50:31.684Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "295ecf89-8ccd-410d-a799-1c248e936414",
+            "colId": "6df60a24-48e2-41d2-a942-618f470af30c",
+            "containerId": "86dc3fcd-e989-4ce1-b835-4d1308535097",
+            "name": "Listar carro por id",
+            "url": "http://localhost:3001/cars/1",
+            "method": "GET",
+            "sortNum": 7500,
+            "created": "2023-05-29T19:50:31.685Z",
+            "modified": "2023-05-29T19:50:31.685Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "317ff4c3-a1ef-4624-9eb2-894bcf718508",
+            "colId": "6df60a24-48e2-41d2-a942-618f470af30c",
+            "containerId": "b06689ab-92c1-4d14-b41d-47268cf57378",
+            "name": "Criar Viagem Sem Waypoints ",
+            "url": "http://localhost:3001/passengers/1/request/travel",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-05-29T19:50:31.686Z",
+            "modified": "2023-05-29T19:50:59.840Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"startingAddress\": \"Rua negro e solimões\",\n  \"endingAddress\": \"Rua trio parada dura\",\n  \"waypoints\": []\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "3a347010-42d1-4173-bb6c-244ef9d238d6",
+            "colId": "6df60a24-48e2-41d2-a942-618f470af30c",
+            "containerId": "bde24c02-551f-4878-93ca-7e2121419904",
+            "name": "Listar Viagens Abertas (Motorista)",
+            "url": "http://localhost:3001/drivers/open/travels",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-05-29T19:50:31.687Z",
+            "modified": "2023-05-29T19:50:31.687Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "5d86f4c3-bcfb-40fb-affc-cbb84dadf2df",
+            "colId": "6df60a24-48e2-41d2-a942-618f470af30c",
+            "containerId": "86dc3fcd-e989-4ce1-b835-4d1308535097",
+            "name": "Cadastrar carro",
+            "url": "http://localhost:3001/cars",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-05-29T19:50:31.688Z",
+            "modified": "2023-05-29T19:50:31.688Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"model\": \"Fusca\",\n  \"color\": \"Amarelo\",\n  \"licensePlate\": \"ABC1D2E\",\n  \"year\": 2019,\n  \"driverId\": 1\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "5d02fdda-792b-49ef-a14d-449ffef541b2",
+            "colId": "6df60a24-48e2-41d2-a942-618f470af30c",
+            "containerId": "bde24c02-551f-4878-93ca-7e2121419904",
+            "name": "Alterar status da viagem",
+            "url": "http://localhost:3001/drivers/1/travels/1",
+            "method": "PATCH",
+            "sortNum": 30000,
+            "created": "2023-05-29T19:50:31.689Z",
+            "modified": "2023-05-29T19:50:31.689Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "1c15a23e-e4a7-4173-8342-e7b357139ab4",
+            "colId": "6df60a24-48e2-41d2-a942-618f470af30c",
+            "containerId": "bde24c02-551f-4878-93ca-7e2121419904",
+            "name": "Listar motoristas",
+            "url": "http://localhost:3001/drivers",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2023-05-29T19:50:31.690Z",
+            "modified": "2023-05-29T19:50:31.690Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "ff72bbfc-1f2a-4432-a7cb-da4f30056fc9",
+            "colId": "6df60a24-48e2-41d2-a942-618f470af30c",
+            "containerId": "b06689ab-92c1-4d14-b41d-47268cf57378",
+            "name": "Criar Viagem Com Waypoints ",
+            "url": "http://localhost:3001/passengers/1/request/travel",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2023-05-29T19:50:31.691Z",
+            "modified": "2023-05-29T19:51:19.721Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"startingAddress\": \"Rua negro e solimões\",\n  \"endingAddress\": \"Rua trio parada dura\",\n  \"waypoints\": [\n    {\n      \"address\": \"Rua Quatro de Março\",\n      \"stopOrder\": 1\n    },\n    {\n      \"address\": \"Rua Sete de Setembro\",\n      \"stopOrder\": 2\n    }\n    ]\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "6e1f4deb-2678-48c9-a4d4-10dc8c2ea898",
+            "colId": "6df60a24-48e2-41d2-a942-618f470af30c",
+            "containerId": "bde24c02-551f-4878-93ca-7e2121419904",
+            "name": "Listar motorista por id",
+            "url": "http://localhost:3001/drivers/1",
+            "method": "GET",
+            "sortNum": 55000,
+            "created": "2023-05-29T19:50:31.692Z",
+            "modified": "2023-05-29T19:50:31.692Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "ff55e248-15c3-4c9e-a07b-979a8e15303d",
+            "colId": "6df60a24-48e2-41d2-a942-618f470af30c",
+            "containerId": "bde24c02-551f-4878-93ca-7e2121419904",
+            "name": "Criar motorista",
+            "url": "http://localhost:3001/drivers",
+            "method": "POST",
+            "sortNum": 60000,
+            "created": "2023-05-29T19:50:31.693Z",
+            "modified": "2023-05-29T19:50:31.693Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Gus Fring\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "a89ab61f-56e0-4ba5-a233-2efb198cac8c",
+            "colId": "6df60a24-48e2-41d2-a942-618f470af30c",
+            "containerId": "b06689ab-92c1-4d14-b41d-47268cf57378",
+            "name": "Listar Passageiros",
+            "url": "http://localhost:3001/passengers",
+            "method": "GET",
+            "sortNum": 90000,
+            "created": "2023-05-29T19:50:31.694Z",
+            "modified": "2023-05-29T19:50:31.694Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "4ee2a137-043e-4361-bb2b-f42d1f455462",
+            "colId": "6df60a24-48e2-41d2-a942-618f470af30c",
+            "containerId": "b06689ab-92c1-4d14-b41d-47268cf57378",
+            "name": "Listar Passageiro por Id",
+            "url": "http://localhost:3001/passengers/100",
+            "method": "GET",
+            "sortNum": 100000,
+            "created": "2023-05-29T19:50:31.695Z",
+            "modified": "2023-05-29T19:50:31.695Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "90bb405c-46a0-4e8a-9b61-e91181a1a795",
+            "colId": "6df60a24-48e2-41d2-a942-618f470af30c",
+            "containerId": "86dc3fcd-e989-4ce1-b835-4d1308535097",
+            "name": "Editar carro",
+            "url": "http://localhost:3001/cars/6",
+            "method": "PUT",
+            "sortNum": 130000,
+            "created": "2023-05-29T19:50:31.696Z",
+            "modified": "2023-05-29T19:50:31.696Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"model\": \"Novo Fusca\",\n  \"color\": \"Branco\",\n  \"licensePlate\": \"ABC1D2E\",\n  \"year\": 2019\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "b05a499b-a1df-4898-8998-cb09f1d03f87",
+            "colId": "6df60a24-48e2-41d2-a942-618f470af30c",
+            "containerId": "86dc3fcd-e989-4ce1-b835-4d1308535097",
+            "name": "Deletar carro",
+            "url": "http://localhost:3001/cars/6",
+            "method": "DELETE",
+            "sortNum": 140000,
+            "created": "2023-05-29T19:50:31.697Z",
+            "modified": "2023-05-29T19:50:31.697Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "8423f8f7-7b59-430d-8956-218bcfc1e1de",
+            "colId": "6df60a24-48e2-41d2-a942-618f470af30c",
+            "containerId": "b06689ab-92c1-4d14-b41d-47268cf57378",
+            "name": "Cadastrar passageiro",
+            "url": "http://localhost:3001/passengers",
+            "method": "POST",
+            "sortNum": 160000,
+            "created": "2023-05-29T19:50:31.698Z",
+            "modified": "2023-05-29T19:50:31.698Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Jose Kleber\",\n  \"email\": \"jk@mail.com\",\n  \"phone\": \"12992187654\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "5f42263c-63b8-41e4-a5af-54f70c8f3697",
+            "colId": "6df60a24-48e2-41d2-a942-618f470af30c",
+            "containerId": "b06689ab-92c1-4d14-b41d-47268cf57378",
+            "name": "Editar Passageiro",
+            "url": "http://localhost:3001/passengers/6",
+            "method": "PUT",
+            "sortNum": 165000,
+            "created": "2023-05-29T19:50:31.699Z",
+            "modified": "2023-05-29T19:51:50.739Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Jose Cleber\",\n  \"email\": \"clebao.j@mail.com\",\n  \"phone\": \"12992187654\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "dc1c87f5-2c39-4ce9-a3a1-c4bc3ef2b921",
+            "colId": "6df60a24-48e2-41d2-a942-618f470af30c",
+            "containerId": "b06689ab-92c1-4d14-b41d-47268cf57378",
+            "name": "Deletar passageiro",
+            "url": "http://localhost:3001/passengers/6",
+            "method": "DELETE",
+            "sortNum": 170000,
+            "created": "2023-05-29T19:50:31.700Z",
+            "modified": "2023-05-29T19:50:31.700Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}

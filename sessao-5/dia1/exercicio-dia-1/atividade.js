@@ -1,3 +1,5 @@
+// Todas as atividades desse modulo estão no repositório https://github.com/tryber/trybecar. Aqui usamos o branch 1-begin
+
 // Exercício 1
 // Qual é a importância da arquitetura de software no desenvolvimento de um sistema?
 // Exercício 2

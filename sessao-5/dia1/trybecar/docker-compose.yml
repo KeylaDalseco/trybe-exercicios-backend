@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+  # Serviço que irá rodar o node
+  node:
+    image: node:16.14
+    container_name: trybecar
+    # Mesmo que `docker run -t`
+    tty: true
+    # Mesmo que `docker run -i`
+    stdin_open: true
+    command: bash
+    restart: always
+    working_dir: /home/node/app
+    volumes:
+      - ./:/home/node/app
+    depends_on:
+      - database
+    ports:
+      # Expõe a porta padrão da aplicação: altere aqui caso use outra porta
+      - 3001:3001
+    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: password
+      MYSQL_PORT: 3306
+      MYSQL_HOST: database # Nome do service que será utilizado para o banco de dados
+      PORT: 3001
+
+# Serviço que irá rodar o banco de dados
+  database:
+    image: mysql:8.0.29
+    container_name: trybecar_db
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: trybecardb
+    ports:
+      - 33060:3306
+    volumes:
+      - ./:/docker-entrypoint-initdb.d
