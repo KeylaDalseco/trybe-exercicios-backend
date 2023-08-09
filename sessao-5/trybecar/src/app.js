@@ -1,5 +1,6 @@
 const express = require('express');
 const { passengerModel, travelModel, driverModel } = require('./models');
+const { carService } = require('./services/index');
 
 const app = express();
 
@@ -110,4 +111,60 @@ app.patch('/drivers/:driverId/travels/:travelId', async (req, res) => {
 
   res.status(200).json(updatedTravel);
 });
+
+// SERVICE - dia 3 ===============================================================
+
+app.get('/cars', async (_req, res) => {
+  const serviceResponse = await carService.findAll();
+  if (serviceResponse.status !== 'SUCCESSFUL') {
+    return res.status(400).json(serviceResponse.data);
+  }
+  return res.status(200).json(serviceResponse.data);
+});
+
+app.post('/cars', async (req, res) => {
+  const { model, licensePlate, year, color, driverId } = req.body;
+  const serviceResponse = await carService.createCar({
+    model, 
+    licensePlate, 
+    year, 
+    color, 
+    driverId,
+  });
+
+  console.log(serviceResponse);
+  if (serviceResponse.status !== 'SUCCESSFUL') {
+    return res.status(400).json(serviceResponse.data);
+  }
+  return res.status(201).json(serviceResponse.data);
+});
+
+app.get('/cars/:id', async (req, res) => {
+  const { id } = req.params;
+  const serviceResponse = await carService.findById(Number(id));
+  if (serviceResponse.status === 'INVALID_ID') {
+    return res.status(400).json({ message: 'ID INVÁLIDO' });
+  }
+  if (serviceResponse.status === 'NOT_FOUND') {
+    return res.status(400).json({ message: 'não encontrado' });
+  }
+  return res.status(200).json(serviceResponse.data);
+});
+
+app.put('/cars/:id', async (req, res) => {
+  const { id } = req.params;
+  const carData = req.body;
+
+  const update = await carService.update({ id: Number(id), ...carData });
+
+  if (update.status === 'placa_invalida') {
+    return res.status(422).json({ message: 'placa inválida' });
+  }
+
+  if (update.status === 'NOT_FOUND') {
+    return res.status(400).json({ message: 'não encontrado' });
+  }
+    res.status(200).json(update.data);
+});
+
 module.exports = app;
