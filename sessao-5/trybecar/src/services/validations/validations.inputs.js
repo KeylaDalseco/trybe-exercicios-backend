@@ -2,7 +2,7 @@
 // Biblioteca Joi para validação deve ser usada aqui.
 // importo o schema validando para cá
 // a função validate que executa essa validação
-const { addCarSchema } = require('./schemas');
+const { addCarSchema, addRequestTravelSchema } = require('./schemas');
 
 const validateNewCar = ({ model, licensePlate, year, color, driverId }) => {
   const { error } = addCarSchema
@@ -19,7 +19,13 @@ const isValidLicensePlateFormat = (licensePlate) => {
   return licensePlateRegex.test(licensePlate);
 };
 
+const validateRequestTravel = (keysObjectToValidate) => {
+  const { error } = addRequestTravelSchema.validate(keysObjectToValidate);
+  if (error) return { status: 'INVALID_VALUE', message: error.message };
+};
+
 module.exports = {
   validateNewCar,
+  validateRequestTravel,
   isValidLicensePlateFormat,
 };

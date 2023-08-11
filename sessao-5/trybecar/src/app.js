@@ -1,6 +1,6 @@
 const express = require('express');
 const { passengerModel, travelModel, driverModel } = require('./models');
-const { carService } = require('./services/index');
+const { carService, travelService } = require('./services/index');
 
 const app = express();
 
@@ -11,43 +11,43 @@ const passengerExists = async (passengerId) => {
   return passenger || false;
 };
 
-app.get('/passengers', async (req, res) => {
-  const passengers = await passengerModel.findAll();
-  return res.status(200).json(passengers);
+// dia 1 + o dia 4 que foi refatoração
+// fou criada a função dentro do service
+// const passengerExists = async (passengerId) => {
+//   const passenger = await passengerModel.findById(passengerId);
+//   return passenger || false;
+// };
+
+app.post('/passengers/:passengerId/request/travel', async (req, res) => {
+  const { passengerId } = req.params;
+
+  const travelData = { passengerId, ...req.body };
+  const serviceResponse = await travelService.requestTravel(travelData);
+  if (serviceResponse.status !== 'SUCCESSFUL') {
+    return res.status(422).json({ message: serviceResponse.data });
+  }
+
+  return res.status(201).json(serviceResponse.data);
 });
 
-app.post('/passengers', async (req, res) => {
-  const { email, name, phone } = req.body;
-  
-  if (!name || !email || !phone) {
-    return res.status(400).json({ message: 'Algum campo está faltando' });
+app.get('/drivers/open/travels', async (_req, res) => {
+  const serviceResponse = await travelService.getOpenTravels();
+  if (serviceResponse.status !== 'SUCCESSFUL') {
+    return res.status(422).json({ message: serviceResponse.data });
   }
-  // insere os registros no banco
-  const passenger = { email, name, phone };
-  const id = await passengerModel.insert(passenger);
-  return res.status(201).json({
-    id,
-    name,
-    email,
-    phone,
-  });
-});
-app.get('/passengers/:id', async (req, res) => {
-  const { id } = req.params;
-  const passenger = await passengerModel.findById(id);
-  if (!passenger) return res.status(404).json({ message: 'Passenger not found' });
-  return res.status(200).json(passenger);
+  res.status(200).json(serviceResponse.data);
 });
 
-app.put('/passengers/:id', async (req, res) => {
-  const { email, name, phone } = req.body;
-  const { id } = req.params;
-  
-  if (!name || !email || !phone) {
-    return res.status(400).json({ message: 'Algum campo está faltando' });
-  }
-  const passenger = await passengerModel.update(id, { name, email, phone });
-  return res.status(204).json(passenger);
+app.patch('/drivers/:driverId/travels/:travelId', async (req, res) => {
+  const { driverId, travelId } = req.params;
+  const INCREMENT_STATUS = 1;
+  const { travelStatusId } = await travelModel.findById(travelId);
+  const nextTravelStatusId = travelStatusId + INCREMENT_STATUS;
+
+  await travelModel.update(travelId, { driverId, travelStatusId: nextTravelStatusId });
+  const updatedTravel = await travelModel.findById(travelId);
+
+  res.status(200).json(updatedTravel);
 });
 
 app.delete('/passengers/:id', async (req, res) => {
