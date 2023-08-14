@@ -1,8 +1,6 @@
 const travelIdFromDB = { insertId: 42 };
 const travelIdFromModel = 42;
 
-
-
 const travelFromDB = {
   id: 42,
   driver_id: null,
@@ -120,6 +118,46 @@ const returnFromDB = [
   undefined,
 ];
 
+
+
+const updatedTravelFromModel = {
+  id: 42,
+  driverId: 1,
+  startingAddress: 'starting street',
+  endingAddress: 'end street',
+  requestDate: '2023-05-29T19:56:25.000Z',
+  travelStatusId: 2,
+  status: 'Motorista a caminho',
+  waypoints: [],
+};
+const finishedTravelFromModel = {
+  id: 42,
+  driverId: 1,
+  startingAddress: 'starting street',
+  endingAddress: 'end street',
+  requestDate: '2023-05-29T19:56:25.000Z',
+  travelStatusId: 4,
+  status: 'Viagem Finalizada',
+  waypoints: [],
+};
+
+const travelFromServiceCreated = {
+  status: 'CREATED',
+  data: travelFromModel,
+};
+const travelFromServiceInvalidValue = {
+  status: 'INVALID_VALUE',
+  data: { message: 'message' },
+};
+const travelFromServiceNotFound = {
+  status: 'NOT_FOUND',
+  data: { message: 'message' },
+};
+const travelFromServiceConflict = {
+  status: 'CONFLICT',
+  data: { message: 'message' },
+};
+
 module.exports = {
   travelIdFromDB,
   travelIdFromModel,
@@ -130,4 +168,10 @@ module.exports = {
   travelByStatusFromDB,
   travelByStatusFromModel,
   returnFromDB,
+  updatedTravelFromModel,
+  finishedTravelFromModel,
+  travelFromServiceCreated,
+  travelFromServiceInvalidValue,
+  travelFromServiceNotFound,
+  travelFromServiceConflict,
 };

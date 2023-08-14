@@ -167,4 +167,59 @@ app.put('/cars/:id', async (req, res) => {
     res.status(200).json(update.data);
 });
 
+app.post('/passengers/:passengerId/request/travel', async (req, res) => {
+  const { passengerId } = req.params;
+  const travelData = { passengerId, ...req.body };
+
+  const serviceResponse = await travelService.requestTravel(travelData);
+  if (serviceResponse.status !== 'SUCCESSFUL') {
+    return res.status(422).json(serviceResponse.data);
+  }
+
+  return res.status(201).json(serviceResponse.data);
+});
+
+app.get('/drivers/open/travels', async (_req, res) => {
+  const serviceResponse = await travelService.getOpenTravels();
+  return res.status(200).json(serviceResponse.data);
+});
+
+app.patch('/drivers/:driverId/travels/:travelId', async (req, res) => {
+  const { driverId, travelId } = req.params;
+  
+  const serviceResponse = await travelService.updateTravelStatus(driverId, travelId);
+  
+  if (serviceResponse.status !== 'SUCCESSFUL') {
+    return res.status(422).json(serviceResponse.data);
+  }
+
+  return res.status(200).json(serviceResponse.data);
+});
+
+// ==============================================
+// app do dia 5 - com controller e testes dele.
+const { passengerRoutes, driverRoutes } = require('./routes');
+
+app.use(express.json());
+// adicionamos a rota criada em routes
+app.use('/passengers', passengerRoutes);
+app.use('/drivers', driverRoutes);
+
+app.get('/drivers/open/travels', async (_req, res) => {
+  const serviceResponse = await travelService.getOpenTravels();
+  return res.status(200).json(serviceResponse.data);
+});
+
+app.patch('/drivers/:driverId/travels/:travelId', async (req, res) => {
+  const { driverId, travelId } = req.params;
+  
+  const serviceResponse = await travelService.updateTravelStatus(driverId, travelId);
+  
+  if (serviceResponse.status !== 'SUCCESSFUL') {
+    return res.status(422).json(serviceResponse.data);
+  }
+
+  return res.status(200).json(serviceResponse.data);
+});
+
 module.exports = app;
