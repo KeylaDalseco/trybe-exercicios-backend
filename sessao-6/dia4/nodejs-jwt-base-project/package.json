@@ -1,0 +1,32 @@
+{
+  "name": "api-jwt",
+  "version": "1.0.0",
+  "main": "./src/server.js",
+  "scripts": {
+    "prestart": "npx sequelize db:drop && npx sequelize db:create && npx sequelize db:migrate && npx sequelize db:seed:all",
+    "start": "node .",
+    "test": "mocha ./tests/**/*$NAME*.test.js --exit",
+    "predev": "npx sequelize db:drop && npx sequelize db:create && npx sequelize db:migrate && npx sequelize db:seed:all",
+    "dev": "nodemon --inspect=0.0.0.0:9229 src/server.js",
+    "test:coverage": "nyc --include='src/**/*.js' npm run test",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix ."
+  },
+  "dependencies": {
+    "express": "4.18.2",
+    "jsonwebtoken": "9.0.0",
+    "mysql2": "2.3.3",
+    "sequelize": "6.30.0",
+    "sequelize-cli": "6.4.1"
+  },
+  "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.2",
+    "chai": "4.3.6",
+    "chai-http": "4.3.0",
+    "eslint-config-trybe-backend": "2.1.0",
+    "mocha": "9.2.2",
+    "nodemon": "2.0.22",
+    "nyc": "15.1.0",
+    "sinon": "12.0.1"
+  }
+}

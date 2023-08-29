@@ -1,0 +1,33 @@
+{
+  "name": "exercise-sequelize-associations",
+  "version": "1.0.0",
+  "description": "Exercício do dia 6.3 - ORM - Associations N:N e Transactions",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node .",
+    "dev": "nodemon .",
+    "lint": "eslint .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tryber/exercise-sequelize-associations.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tryber/exercise-sequelize-associations/issues"
+  },
+  "homepage": "https://github.com/tryber/exercise-sequelize-associations#readme",
+  "dependencies": {
+    "express": "4.18.2",
+    "mysql2": "2.3.0",
+    "sequelize": "6.30.0"
+  },
+  "devDependencies": {
+    "eslint-config-trybe-backend": "2.1.0",
+    "nodemon": "2.0.22",
+    "sequelize-cli": "6.2.0"
+  }
+}

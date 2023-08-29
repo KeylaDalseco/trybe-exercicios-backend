@@ -1,0 +1,33 @@
+{
+  "name": "exercicio-sequelize",
+  "version": "1.0.0",
+  "description": "Projeto base para o exercício de sequelize referente aos relacionamentos 1:1 e 1:N",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "nodemon src/server.js",
+    "lint": "eslint .",
+    "start": "node src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tryber/exercise-sequelize-associations-11-1n.git"
+  },
+  "keywords": [],
+  "author": "Trybe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tryber/exercise-sequelize-associations-11-1n/issues"
+  },
+  "homepage": "https://github.com/tryber/exercise-sequelize-associations-11-1n#readme",
+  "dependencies": {
+    "express": "4.18.1",
+    "mysql2": "2.3.3",
+    "sequelize": "6.30.0"
+  },
+  "devDependencies": {
+    "eslint-config-trybe-backend": "2.1.0",
+    "nodemon": "2.0.19",
+    "sequelize-cli": "6.4.1"
+  }
+}

@@ -1,0 +1,32 @@
+version: '3.1'
+
+services:
+  mysql:
+    image: mysql:8.0.32
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - 3306:3306
+
+  api:
+    image: node:16.19.1-slim
+    restart: always
+    container_name: api
+    ports:
+      - 3001:3001
+    environment:
+      DB_HOST: mysql
+      DB_NAME: hospital_control
+      DB_USER: root
+      DB_PASSWORD: password
+      PORT: 3001
+    volumes:
+      - ./:/usr/app
+    user: node
+    working_dir: /usr/app
+    command: bash
+    # As duas opções abaixo correspondem ao -it
+    tty: true # -t
+    stdin_open: true #-i 
+    depends_on:
+      - mysql
