@@ -1,0 +1,30 @@
+name: Deploy para Railway
+
+# Quando deve acontecer - Event
+on:
+  push:
+    branches:
+      - "main"
+
+# Passos para deploy
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do projeto
+        uses: actions/checkout@v3
+
+      - name: Install Railway CLI
+        uses: betrybe/setup-railway-cli-action@latest
+        with:
+          npm-mode: true
+
+      - name: Deploy to Railway - todolist-frontend
+        run: railway up --detach -s todolist-frontend
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+
+      - name: Deploy to Railway - todolist-backend
+        run: railway up --detach -s todolist-backend
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
