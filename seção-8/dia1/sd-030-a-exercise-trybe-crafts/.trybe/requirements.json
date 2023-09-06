@@ -1,0 +1,44 @@
+{
+  "requirements": [
+    {
+      "bonus": false,
+      "description": "01 - insert deve",
+      "enabled": true,
+      "identifier": null,
+      "order": 1,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "02 - insertProducts deve",
+      "enabled": true,
+      "identifier": null,
+      "order": 2,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "03 - findById deve retornar",
+      "enabled": true,
+      "identifier": null,
+      "order": 3,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "04 - calculateTotalPrice deve retornar",
+      "enabled": true,
+      "identifier": null,
+      "order": 4,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "05 - orderRequest deve retornar",
+      "enabled": true,
+      "identifier": null,
+      "order": 5,
+      "skill_ids": []
+    }
+  ]
+}
