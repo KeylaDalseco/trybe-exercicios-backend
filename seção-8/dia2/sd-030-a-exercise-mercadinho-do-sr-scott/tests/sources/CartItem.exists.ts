@@ -1,0 +1,1 @@
+import { CartItem } from "../../src/types/CartItem";
