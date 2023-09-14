@@ -1,0 +1,28 @@
+{
+  "requirements": [
+    {
+      "bonus": false,
+      "description": "01 - Crie testes de integração para a funcionalidade de cadastrar transações",
+      "enabled": true,
+      "identifier": null,
+      "order": 1,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "02 - Crie testes unitários para a função `create`, da camada `Service`",
+      "enabled": true,
+      "identifier": null,
+      "order": 2,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "03 - Crie testes unitários para a função `create`, da camada `Controller`",
+      "enabled": true,
+      "identifier": null,
+      "order": 3,
+      "skill_ids": []
+    }
+  ]
+}
