@@ -1,9 +1,9 @@
-interface Person {
+interface Person1 {
   name: string,
   info: string,
 }
 
-class Student implements Person {
+class Student implements Person1 {
   constructor(public name: string, public school: string) {}
 
   get info() {
@@ -11,7 +11,7 @@ class Student implements Person {
   }
 }
 
-class Professor implements Person {
+class Professor implements Person1 {
   constructor(
     public name: string,
     public school: string,
@@ -23,7 +23,7 @@ class Professor implements Person {
   }
 }
 
-const printInfo = (person: Person) => {
+const printInfo = (person: Person1) => {
   console.log(person.info)
 }
 
