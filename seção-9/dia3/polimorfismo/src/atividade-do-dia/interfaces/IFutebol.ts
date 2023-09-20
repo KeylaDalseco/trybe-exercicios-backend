@@ -1,0 +1,4 @@
+interface IFutebol {
+  chuteira: string;
+
+}
